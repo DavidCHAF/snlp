@@ -1,18 +1,47 @@
- document.getElementById('accueil').addEventListener('click', function() {
-    const btn = document.getElementById('accueil');
-  });
-  document.getElementById('about').addEventListener('click', function() {
-    alert('hello');
-  });
-  document.getElementById('services').addEventListener('click', function() {
-    alert('hey');
-  });
-  document.getElementById('contact').addEventListener('click', function() {
-    alert('hey');
+// Injecte le header
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header-container').innerHTML = data;
+
+    // Ajout des écouteurs une fois que le header est bien en place
+    document.getElementById('accueil')?.addEventListener('click', function () {
+      console.log('Accueil cliqué');
+    });
+    document.getElementById('about')?.addEventListener('click', function () {
+      alert('hello');
+    });
+    document.getElementById('services')?.addEventListener('click', function () {
+      alert('hey');
+    });
+    document.getElementById('contact')?.addEventListener('click', function () {
+      alert('hey');
+    });
+
+    // Header hide on scroll
+    const header = document.querySelector('header');
+    let lastScroll = 0;
+    const hideThreshold = 20;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > hideThreshold) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = currentScroll;
+    });
   });
 
-  // script.js
+// Injecte le footer
+fetch('footer.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('footer-container').innerHTML = data;
+  });
 
+// Carrousel
 const slides = document.querySelectorAll('.slide');
 let current = 0;
 
@@ -21,34 +50,14 @@ function showSlide(index) {
     slide.classList.toggle('active', i === index);
   });
 }
-
 function nextSlide() {
   current = (current + 1) % slides.length;
   showSlide(current);
 }
-
 showSlide(current);
-setInterval(nextSlide, 5000); // Changer d'image toutes les 5 secondes
+setInterval(nextSlide, 5000);
 
-let lastScroll = 0;
-const header = document.querySelector('header');
-const hideThreshold = 20; // le seuil en pixels avant de cacher
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll && currentScroll > hideThreshold) {
-    // Si on descend ET qu’on est sous le seuil -> cache
-    header.classList.add('hide');
-  } else {
-    // Sinon -> montre
-    header.classList.remove('hide');
-  }
-
-  lastScroll = currentScroll;
-});
-const fadeElems = document.querySelectorAll('.fade-in-up');
-
+// Apparition des éléments au scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -59,6 +68,8 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 
-fadeElems.forEach(el => {
-  observer.observe(el);
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
 });
