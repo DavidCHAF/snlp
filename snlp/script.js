@@ -78,3 +78,31 @@ const observer = new IntersectionObserver(entries => {
 });
 
 fadeElems.forEach(el => observer.observe(el));
+
+const track = document.querySelector('.carousel-ad-track');
+const slides_ad = Array.from(track.children);
+const prevButton = document.querySelector('.carousel-ad-btn.prev');
+const nextButton = document.querySelector('.carousel-ad-btn.next');
+const slideWidth = slides_ad[0].getBoundingClientRect().width;
+
+let currentIndex = 0;
+
+function updateSlidePosition() {
+  track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
+}
+
+prevButton.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides_ad.length) % slides_ad.length;
+  updateSlidePosition();
+});
+
+nextButton.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides_ad.length;
+  updateSlidePosition();
+});
+
+window.addEventListener('resize', () => {
+  // Recalcule la largeur au redimensionnement
+  const newWidth = slides_ad[0].getBoundingClientRect().width;
+  track.style.transform = 'translateX(-' + (newWidth * currentIndex) + 'px)';
+});
