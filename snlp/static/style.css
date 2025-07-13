@@ -374,3 +374,111 @@ main {
   opacity: 1;
   transform: translateY(0);
 }
+
+.carousel-ad-section {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 100px 0;
+}
+
+.carousel-ad-section h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+}
+
+.carousel-ad {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.carousel-ad-track {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-ad-slide {
+  min-width: 100%;
+  display: flex;
+  /* centre l'image dedans */
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-ad-slide img {
+  max-width: 20%;
+  /* ajuste la taille de l’image */
+  height: auto;
+  border-radius: 8px;
+}
+
+.carousel-ad-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 32px;
+  padding: 8px 16px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+}
+
+.carousel-ad-btn.prev {
+  left: 10px;
+}
+
+.carousel-ad-btn.next {
+  right: 10px;
+}
+
+.carousel-ad-btn:hover {
+  background: rgba(0, 0, 0, 0.073);
+}
+
+.service-detail {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.image-compare {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-compare .before,
+.image-compare .after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-compare .after {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.3s ease;
+}
+
+.image-compare .slider {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 2;
+}
