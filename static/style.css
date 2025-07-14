@@ -482,3 +482,114 @@ main {
   width: 80%;
   z-index: 2;
 }
+
+@media (max-width: 768px) {
+
+  .description,
+  .description2 {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    height: auto;
+    position: relative;
+  }
+
+  .description {
+    background-color: white;
+  }
+
+  .description2 {
+    background-color: #def3fd;
+  }
+
+  .description::after,
+  .description2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    pointer-events: none;
+  }
+
+  .description::after {
+    background: linear-gradient(to bottom, transparent, #def3fd);
+  }
+
+  .description2::after {
+    background: linear-gradient(to bottom, transparent, white);
+  }
+
+  .description h2,
+  .description2 h2 {
+    font-size: 24px;
+  }
+
+  .description p,
+  .description2 p {
+    font-size: 16px;
+  }
+
+  .image-compare {
+    height: 220px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .image-compare .before,
+  .image-compare .after {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slider {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+    max-width: 100%;
+    margin: auto;
+    justify-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100px;
+    aspect-ratio: 1 / 1;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .card p {
+    display: none;
+  }
+
+  /* ligne du haut : 1, 2, 3 → positions naturelles */
+  /* ligne du bas : 4 et 5 décalés vers le centre */
+  .cards-container a:nth-child(4) {
+    grid-column: 2;
+  }
+
+  .cards-container a:nth-child(5) {
+    grid-column: 3;
+  }
+}
