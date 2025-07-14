@@ -1,0 +1,595 @@
+/* -----------------------------------------------
+  1. POLICES PERSONNALISÉES
+-------------------------------------------------*/
+
+@font-face {
+  font-family: 'LemonMilk';
+  src: url('../fonts/LEMONMILK-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LemonMilk-Bold';
+  src: url('../fonts/LEMONMILK-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caviar';
+  src: url('../fonts/CaviarDreams.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* -----------------------------------------------
+  2. STYLE GLOBAL
+-------------------------------------------------*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Caviar', sans-serif;
+}
+
+main {
+  background-color: #def3fd;
+  margin-top: 80px;
+  /* Pour ne pas être caché par le header */
+  padding: 0;
+}
+
+
+/* -----------------------------------------------
+  3. LOGOS
+-------------------------------------------------*/
+
+.logo {
+  width: 200px;
+  height: auto;
+  bottom: 20px;
+}
+
+
+/* -----------------------------------------------
+  4. CARROUSEL D’ACCUEIL (images floues en fond)
+-------------------------------------------------*/
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.carousel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, transparent, #333);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+.carousel-content h2 {
+  font-size: 48px;
+  margin: 150px 0 0 0;
+}
+
+.carousel-content p {
+  font-size: 18px;
+  text-align: left;
+}
+
+
+/* -----------------------------------------------
+  5. CARDS (blocs cliquables en page d’accueil)
+-------------------------------------------------*/
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+  transform: translateY(-50px);
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 300px;
+  text-align: left;
+  color: black;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #e5f9f9;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card p {
+  line-height: 1.6;
+}
+
+
+/* -----------------------------------------------
+  6. SECTIONS DESCRIPTION (texte explicatif)
+-------------------------------------------------*/
+
+.description, .description2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  min-height: 500px;
+  padding: 40px;
+}
+
+.description {
+  align-items: flex-start;
+  padding-right: 260px;
+}
+
+.description2 {
+  align-items: flex-end;
+  padding-right: 40px;
+  background-color: white;
+}
+
+.description h2,
+.description2 h2 {
+  font-size: 48px;
+}
+
+.description p,
+.description2 p {
+  font-size: 18px;
+}
+
+.description2 p {
+  text-align: right;
+}
+
+/* Fondu en bas de section */
+.description::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.description2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #def3fd);
+}
+
+.description.no-fade::after {
+  content: none;
+}
+
+
+/* -----------------------------------------------
+  7. SECTION MAP (plan et lien Google Maps)
+-------------------------------------------------*/
+
+.map-section {
+  display: flex;
+  height: 500px;
+  background-color: white;
+}
+
+.map-text {
+  flex: 1;
+  margin-right: 40px;
+  padding-left: 40px;
+}
+
+.map-text h2 {
+  margin-top: 150px;
+  font-size: 30px;
+  color: #021b78;
+}
+
+.map-text p {
+  font-size: 24px;
+  color: #003b3e;
+}
+
+.map-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 70px;
+  margin-top: -180px;
+}
+
+.map-link-button {
+  background-color: #0077cc;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 18px;
+  white-space: nowrap;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.map-link-button:hover {
+  background-color: #005fa3;
+}
+
+.map-wrapper {
+  flex: 1;
+  height: 100%;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+
+/* -----------------------------------------------
+  8. EFFETS D’ANIMATION (fade-in)
+-------------------------------------------------*/
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------------
+  9. CARROUSEL DE LOGOS (clients, partenaires, etc.)
+-------------------------------------------------*/
+
+.carousel-ad-section {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 100px 0;
+}
+
+.carousel-ad-section h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+}
+
+.carousel-ad {
+  position: relative;
+  max-width: 1000px;
+  margin: 100px auto 0 auto;
+  overflow: hidden;
+}
+
+.carousel-ad-track {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-ad-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-ad-slide img {
+  max-width: 20%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.carousel-ad-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 32px;
+  padding: 8px 16px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+}
+
+.carousel-ad-btn.prev {
+  left: 10px;
+}
+
+.carousel-ad-btn.next {
+  right: 10px;
+}
+
+.carousel-ad-btn:hover {
+  background: rgba(0, 0, 0, 0.073);
+}
+
+
+/* -----------------------------------------------
+  10. COMPARATEUR IMAGE (avant/après)
+-------------------------------------------------*/
+
+.image-compare {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-compare .before,
+.image-compare .after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-compare .after {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.3s ease;
+}
+
+.image-compare .slider {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 2;
+}
+
+
+/* -----------------------------------------------
+  11. PAGE DE CONTACT
+-------------------------------------------------*/
+
+.contact-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-left {
+  background-color: #def3fd;
+  color: #213420;
+  z-index: 1;
+}
+
+.contact-right {
+  background-color: white;
+  z-index: 1;
+}
+
+.contact-gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 200px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #def3fd, white);
+  z-index: 0;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.contact-right button {
+  background-color: #def3fd;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+
+/* -----------------------------------------------
+  12. RESPONSIVE DESIGN (Mobile < 768px)
+-------------------------------------------------*/
+
+@media (max-width: 768px) {
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+    max-width: 100%;
+    margin: auto;
+    justify-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100px;
+    aspect-ratio: 1 / 1;
+    padding: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card p {
+    display: none;
+  }
+
+  .cards-container a:nth-child(4) {
+    grid-column: 2;
+  }
+
+  .cards-container a:nth-child(5) {
+    grid-column: 3;
+  }
+
+  .description,
+  .description2 {
+    align-items: center !important;
+    text-align: center;
+    padding: 60px 20px;
+    height: auto;
+  }
+
+  .description::after {
+    background: linear-gradient(to bottom, transparent, #def3fd);
+  }
+
+  .description2::after {
+    background: linear-gradient(to bottom, transparent, white);
+  }
+
+  .description h2,
+  .description2 h2 {
+    font-size: 24px;
+  }
+
+  .description p,
+  .description2 p {
+    font-size: 16px;
+  }
+
+  .image-compare {
+    height: 220px;
+  }
+
+  .slider {
+    width: 80%;
+  }
+
+  .map-section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .map-wrapper {
+    height: 300px;
+  }
+
+  .map-text {
+    padding: 20px;
+  }
+
+  .map-buttons {
+    margin-top: 50px;
+  }
+
+  .map-link-button {
+    margin: 20px auto 0;
+  }
+
+  .contact-page {
+    flex-direction: column;
+    padding-top: 130px;
+    height: auto;
+  }
+
+  .contact-left {
+    display: none;
+  }
+
+  .contact-right {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .contact-right form {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .contact-right textarea {
+    min-height: 120px;
+  }
+}
